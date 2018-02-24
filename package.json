@@ -1,0 +1,22 @@
+{
+  "name": "raspberryjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "egg": "^1.10.1",
+    "egg-view-nunjucks": "^2.1.4"
+  },
+  "devDependencies": {
+    "egg-bin": "^4.3.5",
+    "egg-mock": "^3.13.1"
+  },
+  "scripts": {
+    "test": "egg-bin test"
+  },
+  "engines": {
+    "node": ">=8.9.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
