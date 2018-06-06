@@ -1,0 +1,8 @@
+test
+doc
+node_modules
+logs
+run
+coverage
+**/app/public
+**/app/view

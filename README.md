@@ -24,3 +24,5 @@ raspberryjs 是给予egg开发的企业级框架，主要满足web开发中，�
 reat + node + webpack + koa
 
 UI框架使用antd
+
+代码规范采用的是 [Airbnb](https://github.com/yuche/javascript) 规范

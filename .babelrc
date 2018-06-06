@@ -1,18 +1,13 @@
 // bable配置文件
 
 {
-    "presets": ["stage-3", "env", "es2015", "react"],       // 预设
+    "presets": ["es2015", "react","stage-2"],       // 预设
     "plugins": [
-        "transform-runtime",
-        "syntax-dynamic-import",
-        "transform-vue-jsx",
-        "transform-object-rest-spread",
-        "jsx-v-model"
+        ["import",{
+            "libraryName": "antd",
+            "libraryDirectory": "es",   // default: lib
+            "style": "css"
+        }]
     ],
     "comments": false       // 是否在编译文件中生成注释  默认：true
 }
-
-"import", {
-    "libraryName": "antd",
-    "libraryDirectory": "es",   // default: lib
-    "style": "css"
