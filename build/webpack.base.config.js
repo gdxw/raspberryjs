@@ -11,64 +11,58 @@ function resolve (dir) {
 
 module.exports = {
     entry: {
-        main: ['babel-polyfill', '@/main'],
-        'vender-base': '@/vendors/vendors.base.js',
-        'vender-exten': '@/vendors/vendors.exten.js'
+        main: ['babel-polyfill', '@/app']
     },
     output: {
-        path: path.resolve(__dirname, '../app/webroot/dist')
+        path: path.resolve(__dirname, '../app/public')
+    },
+    optimization:{
+        splitChunks: {              //默认自动分包，详情参考【https://webpack.js.org/plugins/split-chunks-plugin/#src/components/Sidebar/Sidebar.jsx】
+            chunks: 'all'
+        }
     },
     module: {
         rules: [
             {
-                test: /\.vue$/,
-                loader: 'vue-loader',
-                options: {
-                    loaders: {
-                        css: 'vue-style-loader!css-loader',
-                        less: 'vue-style-loader!css-loader!less-loader'
-                    },
-                    postLoaders:{
-                        html: 'babel-loader'
-                    }
-                },
-
-            },{
-                test: /iview\/.*?js$/,
-                loader: 'happypack/loader?id=happybabel',
-                exclude: /node_modules/
-            },{
-                test: /\.js$/,
-                loader: 'happypack/loader?id=happybabel',
-                exclude: /node_modules/
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                loaders: "happypack/loader?id=happybabel"
             },{
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
-                    use: ['css-loader?minimize','autoprefixer-loader'],
+                    use: ['css-loader?minimize','postcss-loader'],
                     fallback: 'style-loader'
                 })
             },{
                 test:/\.less$/,
                 use: ExtractTextPlugin.extract({
-                    use: ['css-loader?minimize','autoprefixer-loader','less-loader'],
+                    use: ['css-loader?minimize','postcss-loader','less-loader'],
                     fallback: 'style-loader'
                 })
             },{
-                test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
-                loader: 'url-loader?limit=1024'
+                test: /\.(png|jpe?g|gif|svg)$/,
+                use: [{
+                    loader: 'url-loader',
+                    options: {
+                        limit: 1024,
+                        name: '[path][name].[hash:8].[ext]',
+                        outputPath: 'images/'
+                    }
+                }]
+            },{
+                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+                loader: 'url-loader',
+                query: {
+                    limit: 1024,
+                    name: '[path][name].[hash:8].[ext]',
+                    outputPath: 'fonts/'
+                }
             },{
                 test:/\.(html|xhtml|tpl)$/,
                 loader: 'html-loader'
             },{
                 test:/\.ejs$/,
                 loader: 'ejs-loader'
-            },{
-                test: /iview.src.*?js$/,
-                loader: 'babel-loader'
-            },{
-                test: /\.js$/,
-                loader: 'babel-loader',
-                include: /toolbox/
             }
         ]
     },
@@ -78,15 +72,15 @@ module.exports = {
             loaders: ['babel-loader'],
             threadPool: happyThreadPool,
             verbose: true
-        })
+        }),
+        new webpack.optimize.OccurrenceOrderPlugin(),
+        new webpack.HotModuleReplacementPlugin()
     ],
     resolve: {
-        extensions: ['.js', '.vue'],
+        extensions: ['.js'],
         alias: {
-            'vue': 'vue/dist/vue.esm.js',
-            '@': resolve('../app/pages'),
+            '@': resolve('../app/webroot'),
             '@mock': resolve('../mock'),
-            "iview": "@zbj/iview"
         }
     }
 }

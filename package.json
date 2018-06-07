@@ -8,6 +8,7 @@
     "babel-polyfill": "^6.26.0",
     "egg": "^1.10.1",
     "egg-view-nunjucks": "^2.1.4",
+    "jsonp": "^0.2.1",
     "lodash": "^4.17.10",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
@@ -27,16 +28,25 @@
     "css-loader": "^0.28.7",
     "egg-bin": "^4.3.5",
     "egg-mock": "^3.13.1",
+    "ejs-loader": "^0.3.1",
     "eslint": "^4.14.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-react": "^7.9.1",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "happypack": "^5.0.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
     "less": "^2.7.2",
     "postcss": "^6.0.12",
     "postcss-loader": "^2.0.6",
-    "webpack": "^3.6.0"
+    "webpack": "^4.11.1",
+    "webpack-cli": "^3.0.3",
+    "webpack-dev-server": "^3.1.4",
+    "webpack-merge": "^4.1.2"
   },
   "scripts": {
-    "test": "egg-bin test"
+    "test": "egg-bin test",
+    "dev": "webpack-dev-server --config ./build/webpack.dev.config.js"
   },
   "engines": {
     "node": ">=8.9.0"
