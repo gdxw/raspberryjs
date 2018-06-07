@@ -51,7 +51,7 @@
   "scripts": {
     "test": "egg-bin test",
     "dev": "webpack-dev-server --config ./build/webpack.dev.config.js",
-    "eslint": "eslint --color"
+    "lint": "eslint --fix --ext .js,.jsx app"
   },
   "engines": {
     "node": ">=8.9.0"

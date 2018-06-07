@@ -26,17 +26,17 @@ module.exports = {
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
-                use: ['happypack/loader?id=happybabel','eslint-loader']
+                use: ['happypack/loader?id=happybabel']
             },{
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
-                    use: ['css-loader?minimize','postcss-loader','eslint-loader'],
+                    use: ['css-loader?minimize','postcss-loader'],
                     fallback: 'style-loader'
                 })
             },{
                 test:/\.less$/,
                 use: ExtractTextPlugin.extract({
-                    use: ['css-loader?minimize','postcss-loader','less-loader','eslint-loader'],
+                    use: ['css-loader?minimize','postcss-loader','less-loader'],
                     fallback: 'style-loader'
                 })
             },{
