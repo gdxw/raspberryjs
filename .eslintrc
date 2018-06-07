@@ -1,4 +1,25 @@
+// 参考  https://blog.csdn.net/gdp12315_gu/article/details/54098810
 {
-    "extends": "eslint-config-airbnb",
-    "parser": "babel-eslint"
+  "extends": "eslint-config-airbnb",
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true,
+    "es6": true
+  },
+  "plugins": [
+    "eslint-plugin-react",
+    "eslint-plugin-jsx-a11y"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    
+  }
 }
