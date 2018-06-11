@@ -1,3 +1,6 @@
+/**
+ * create by daixingwang811 on 2018/06/08 
+ */
 const webpack = require('webpack');
 const fs = require('fs');
 const path = require('path');

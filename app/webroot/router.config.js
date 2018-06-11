@@ -1,3 +1,8 @@
+/**
+ * create by daixingwang811 on 2018/06/07
+ * 路由配置文件
+ */
+
 import Layout from './layout/layout'
 import Home from './page/home'
 import Code from './page/code'
