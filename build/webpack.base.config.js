@@ -5,6 +5,7 @@
 const path = require('path');
 const webpack = require("webpack");
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const { CheckerPlugin } = require('awesome-typescript-loader')
 const HappyPack = require('happypack');
 
 var happyThreadPool = HappyPack.ThreadPool({ size: 5 });
@@ -31,6 +32,9 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: ['happypack/loader?id=happybabel']
+            },{
+                test: /\.(ts|tsx)$/,
+                use: ['happypack/loader?id=happybabel','awesome-typescript-loader']
             },{
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
@@ -77,11 +81,12 @@ module.exports = {
             threadPool: happyThreadPool,
             verbose: true
         }),
+        new CheckerPlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin()
     ],
     resolve: {
-        extensions: ['.js'],
+        extensions: ['.ts','.tsx', '.js', '.jsx'],
         alias: {
             '@': resolve('../app/webroot'),
             '@mock': resolve('../mock'),

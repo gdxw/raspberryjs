@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "outDir": "./app/public/",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "module": "commonjs",
+        "target": "es5",
+        "jsx": "react"
+    },
+    "include": [
+        "./app/webroot/**/*"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

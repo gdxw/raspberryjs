@@ -10,4 +10,5 @@ ReactDOM.render(
   <Provider store={store}>
     <Container/>
   </Provider>,
-  document.getElementById('app'))
+  document.getElementById('app') 
+)
