@@ -4,10 +4,10 @@
  */
 
 import { combineReducers } from 'redux';
-import common from './common';
+import * as common from './common/reducer';
 
 const rootReducer = combineReducers({
-  common
+  ...common
 });
 
 export default rootReducer;

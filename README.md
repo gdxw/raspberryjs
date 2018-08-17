@@ -26,3 +26,6 @@ reat + node + webpack + koa
 UI框架使用antd
 
 代码规范采用的是 [Airbnb](https://github.com/yuche/javascript) 规范
+
+## 说明
+> 本项目主要是用于练手使用，有不对的地方请指正。

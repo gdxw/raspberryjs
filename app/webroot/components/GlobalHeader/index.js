@@ -1,7 +1,7 @@
 /**
  * 公共头部
  */
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { Layout, Menu, Icon, Spin, Tag, Dropdown, Avatar, Divider } from 'antd';
 
 import stylesheet from './index.less'
@@ -11,22 +11,19 @@ import stylesheet from './index.less'
 
 const { Header } = Layout;
 
-export default class GlobalHeader extends PureComponent {
+export default class GlobalHeader extends Component {
     constructor(props){
         super(props);
         this.state = {
             currentUser: {
                 avatar: "https://git.zhubajie.la/uploads/user/avatar/330/dxw.png",
                 name: "gdxw"
-            },
-            collapsed: false,
-            onCollapse (){
-
             }
         };
+        this.toggle = this.toggle.bind(this);
     }
     toggle(){
-        const { collapsed, onCollapse } = this.state;
+        const { collapsed, onCollapse } = this.props;
         onCollapse(!collapsed);
         this.triggerResizeEvent();
     }
@@ -40,10 +37,9 @@ export default class GlobalHeader extends PureComponent {
         
     }
     render(){
-        const {
-            currentUser, collapsed
-        } = this.state;
-
+        const { currentUser } = this.state;
+        const { collapsed } = this.props;
+        
         const menu = (
             <Menu className="menu" selectedKeys={[]} onClick={this.onMenuClick}>
                 <Menu.Item disabled><Icon type="user" />个人中心</Menu.Item>
@@ -54,7 +50,6 @@ export default class GlobalHeader extends PureComponent {
         );
 
         return (
-            
             <Header className="header">
                 <Icon
                     className="trigger"
@@ -69,7 +64,6 @@ export default class GlobalHeader extends PureComponent {
                         </span>
                     </Dropdown>
                 </div>
-                
             </Header>
         )
     }
