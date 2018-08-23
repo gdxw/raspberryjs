@@ -6,7 +6,7 @@ exports.nunjucks = {
   package: 'egg-view-nunjucks',
 };
 
-exports.ua = {
-    enable: true,
-    package: ''
-}
+// exports.ua = {
+//     enable: true,
+//     package: ''
+// }

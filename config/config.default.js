@@ -18,5 +18,15 @@ module.exports = appInfo => {
     defaultViewEngine: 'nunjucks',
   };
 
+  config.news = {
+    pageSize: 5,
+    serverUrl: 'https://hacker-news.firebaseio.com/v0',
+  };
+  
+  config.middleware = [
+    'robot'
+  ];
+  
+
   return config;
 };
