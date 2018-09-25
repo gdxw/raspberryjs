@@ -31,7 +31,12 @@ class LayoutPage extends React.Component{
 
     render(){
         const { collapsed } = this.props;
+        let pageData;
+
         const siderData = this.props.route.routes.map((item,i)=>{
+            if(this.props.location.pathname == item.path){
+                pageData = item;
+            }
             return {
                 label: item.label || ("页面" + i),
                 key: item.key || i,
@@ -49,7 +54,7 @@ class LayoutPage extends React.Component{
                     <GlobalHeader collapsed={collapsed} onCollapse={this.handleMenuCollapse}/>
                     <Content>
                     <div className="page-breadcrumb">
-                        <GlobalBreadcrumb/>
+                        <GlobalBreadcrumb pageData={pageData}/>
                     </div>
                     <div className="page-content">
                         {renderRoutes(this.props.route.routes)}

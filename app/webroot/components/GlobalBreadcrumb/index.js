@@ -11,16 +11,13 @@ export default class GlobalBreadcrumb extends PureComponent{
     }
     
     render(){
+        const { pageData } = this.props;
         return (<Breadcrumb separator="/">
            <Breadcrumb.Item href="">
                <Icon type="home" />首页
            </Breadcrumb.Item>
-           <Breadcrumb.Item href="">
-               <Icon type="user" />
-               <span>子页面</span>
-           </Breadcrumb.Item>
            <Breadcrumb.Item>
-               文章名称
+               {pageData.label}
            </Breadcrumb.Item>
        </Breadcrumb>)
     }

@@ -7,7 +7,6 @@ const path = require('path');
 const merge = require('webpack-merge');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const package = require('../package.json');
 const webpackBaseConfig = require('./webpack.base.config.js');
 
 //获取项目公共配置
@@ -18,7 +17,7 @@ const host = "localhost";
 
 let apiServer = configProject.apiServer || {
   host: "localhost",
-  port: "3110"
+  port: "7001"
 }
 
 module.exports = merge(webpackBaseConfig, {

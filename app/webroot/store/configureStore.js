@@ -6,7 +6,7 @@ import { compose, createStore, applyMiddleware} from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import rootReducer from './reducers';
   
-var buildStore = compose(applyMiddleware(createSagaMiddleware))(createStore);
+// var buildStore = compose(applyMiddleware(createSagaMiddleware))(createStore);
 
 export default function configureStore(initialState){
     const store = createStore(rootReducer, initialState);

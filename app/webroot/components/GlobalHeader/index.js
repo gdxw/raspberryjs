@@ -2,9 +2,9 @@
  * 公共头部
  */
 import React, { Component } from 'react';
-import { Layout, Menu, Icon, Spin, Tag, Dropdown, Avatar, Divider } from 'antd';
-
-import stylesheet from './index.less'
+import { Layout, Menu, Icon, Badge, Dropdown, Avatar } from 'antd';
+import avatarImg from "../GlobalSider/logo-min.png"
+import './index.less'
 // import { Link } from 'dva/router';
 // import NoticeIcon from '../NoticeIcon';
 // import HeaderSearch from '../HeaderSearch';
@@ -16,8 +16,8 @@ export default class GlobalHeader extends Component {
         super(props);
         this.state = {
             currentUser: {
-                avatar: "https://git.zhubajie.la/uploads/user/avatar/330/dxw.png",
-                name: "gdxw"
+                avatar: avatarImg,
+                name: "dxw"
             }
         };
         this.toggle = this.toggle.bind(this);
@@ -57,10 +57,14 @@ export default class GlobalHeader extends Component {
                     onClick={this.toggle}
                 />
                 <div className="right">
+                    <Badge className="head-message" count={1}>
+                        <Icon style={{fontSize:'20px'}} type="message" theme="outlined" />
+                    </Badge>
                     <Dropdown overlay={menu}>
                         <span className="action account">
-                            <Avatar size="small" className="avatar" src={currentUser.avatar} />
-                            <span className="name">{currentUser.name}</span>
+                            <Avatar icon="user">
+                                {currentUser.name.charAt(0)}
+                            </Avatar>
                         </span>
                     </Dropdown>
                 </div>

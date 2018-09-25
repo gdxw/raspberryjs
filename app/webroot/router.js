@@ -1,5 +1,6 @@
 import  React, {Component} from 'react';
-import {Router,Switch} from 'react-router-dom';
+import { HashRouter as Router,Switch} from 'react-router-dom';
+// import { BrowserRouter as Router,Switch} from 'react-router-dom';  
 import {renderRoutes} from 'react-router-config';
 import createBrowserHistory from 'history/createBrowserHistory';
 import routes from './router.config';
@@ -12,7 +13,7 @@ export default class Container extends Component {
   }
   render() {
     return ( 
-      <Router history={history} >
+      <Router >
         <div> 
           {renderRoutes(routes)}
         </div> 

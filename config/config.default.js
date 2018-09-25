@@ -1,37 +1,44 @@
 'use strict';
+const path = require('path');
 
 module.exports = appInfo => {
-  const config = {};
+    const config = {};
 
-  config.keys = 'keys';
+    config.view = {
+        defaultViewEngine: 'nunjucks',                  //更改默认模版引擎nunjucks
+        root: path.join(appInfo.baseDir, 'app/dist')    //更改egg框架的默认目录
+    };
 
-  /**
-   * some description
-   * @member Config#test
-   * @property {String} key - some description
-   */
-  config.test = {
-    key: appInfo.name + '_123456',
-  };
+    config.static = {
+        prefix: '/',
+        dir: path.join(appInfo.baseDir, 'app/dist')     //更改静态资源目录
+    }
 
-  config.view = {
-    defaultViewEngine: 'nunjucks',
-  };
+    config.keys = 'keys';
 
-  config.news = {
-    pageSize: 5,
-    serverUrl: 'https://hacker-news.firebaseio.com/v0',
-  };
+    /**
+     * some description
+     * @member Config#test
+     * @property {String} key - some description
+     */
+    config.test = {
+        key: appInfo.name + '_123456',
+    };
 
-  config.middleware = [
-    'robot'
-  ];
-  
-  config.robot = {
-    ua: [
-      /Baiduspider/i,
-    ]
-  };
+    config.news = {
+        pageSize: 5,
+        serverUrl: 'https://hacker-news.firebaseio.com/v0',
+    };
 
-  return config;
+    config.middleware = [
+        'robot'
+    ];
+    
+    config.robot = {
+        ua: [
+          /Baiduspider/i,
+        ]
+    };
+
+    return config;
 };

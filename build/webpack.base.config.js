@@ -19,7 +19,7 @@ module.exports = {
         main: ['babel-polyfill', '@/app']
     },
     output: {
-        path: path.resolve(__dirname, '../app/public')
+        path: path.resolve(__dirname, '../app/dist/static')
     },
     optimization:{
         splitChunks: {              //默认自动分包，详情参考【https://webpack.js.org/plugins/split-chunks-plugin/#src/components/Sidebar/Sidebar.jsx】

@@ -3,52 +3,64 @@
  * 路由配置文件
  */
 
-import Layout from './layout/layout'
-import Home from './page/home'
-import Code from './page/code'
-import List from './page/list'
-import Aboutus from './page/about-us'
-import Article from './page/article'
-import Book from './page/book'
-import Diary from './page/diary'
-import Share from './page/share'
+import Loadable from "react-loadable";      //react-router按需加载插件  
+import pageLoading from './components/pageLoading';
+import Layout from './layout/layout';
 
 module.exports = [{
     component: Layout,
     routes:[{ 
         path: '/',
-        component: Home,
+        component: Loadable({
+            loader:() => import('./page/home'),
+            loading: pageLoading
+        }),
         exact: true,
         label: '首页',
         icon: 'home',
         key: 'home',
     },{ 
-        path: '/diary',
-        component: Diary,
-        label: '日记',
+        path: '/todo-list',
+        component: Loadable({
+            loader:() => import('./page/todo-list'),
+            loading: pageLoading
+        }),
+        label: 'todoList',
         icon: 'appstore-o',
-        key: 'diary',
+        key: 'todo-list',
     },{ 
         path: '/article',
-        component: Article,
+        component:  Loadable({
+            loader:() => import('./page/article'),
+            loading: pageLoading
+        }),
         label: '文章',
         icon: 'file',
         key: 'article',
     },{ 
         path: '/share',
-        component: Share,
+        component: Loadable({
+            loader:() => import('./page/share'),
+            loading: pageLoading
+        }),
         label: '分享',
         icon: 'share-alt',
         key: 'share',
     },{ 
         path: '/book',
-        component: Book,
+        component: Loadable({
+            loader:() => import('./page/book'),
+            loading: pageLoading
+        }),
         label: '书籍',
         icon: 'book',
         key: 'book',
     },{ 
         path: '/about-us',
-        component: Aboutus,
+        component: Loadable({
+            loader:() => import('./page/about-us'),
+            loading: pageLoading
+        }),
         label: '关于我们',
         icon: 'team',
         key: 'about-us',

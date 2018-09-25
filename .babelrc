@@ -1,5 +1,4 @@
 // bable配置文件
-
 {
     "presets": ["es2015", "react","stage-2"],       // 预设
     "plugins": [
@@ -7,7 +6,8 @@
             "libraryName": "antd",
             "libraryDirectory": "es",   // default: lib
             "style": "css"
-        }]
+        }],
+        "syntax-dynamic-import"         // react-router按需加载插件
     ],
     "comments": false       // 是否在编译文件中生成注释  默认：true
 }
