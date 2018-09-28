@@ -32,15 +32,19 @@ class LayoutPage extends React.Component{
     render(){
         const { collapsed } = this.props;
         let pageData;
-
+        let routeKey;
         const siderData = this.props.route.routes.map((item,i)=>{
+            var isActive = false;
+            debugger
             if(this.props.location.pathname == item.path){
                 pageData = item;
+                routeKey = item.key || i;
             }
             return {
                 label: item.label || ("页面" + i),
                 key: item.key || i,
                 url: item.path || '/',
+                isSelected: isActive,
                 icon: item.icon || 'appstore-o'
             }
         });
@@ -49,6 +53,7 @@ class LayoutPage extends React.Component{
                 <GlobalSider 
                     collapsed={collapsed} 
                     siderData={siderData}
+                    defaultSelectedKeys= {[routeKey]}
                 />
                 <Layout>
                     <GlobalHeader collapsed={collapsed} onCollapse={this.handleMenuCollapse}/>

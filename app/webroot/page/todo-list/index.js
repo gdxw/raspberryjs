@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import { List, Avatar, Button, Icon } from 'antd';
 import ajax from '../../common/ajax';
+import "./index.less";
 
 class Home extends Component{
     constructor(props){
@@ -56,19 +57,28 @@ class Home extends Component{
                     title={<a href="https://ant.design">{item.title}</a>}
                     description = {item.description}
                 />
+                {item.content}
             </List.Item>
         )
 
         return (
-            <List
-                className="demo-loadmore-list"
-                loading={initLoading}
-                itemLayout="vertical"
-                size="large"
-                dataSource={todoList}
-                renderItem={listItem}
-                footer={<div><b>ant design</b> footer part</div>}
-          />
+            <div  className="page-todolist-container">
+                <List
+                    loading={initLoading}
+                    itemLayout="vertical"
+                    pagination={{
+                        onChange: (page) => {
+                        console.log(page);
+                        },
+                        pageSize: 3,
+                    }}
+                    size="large"
+                    dataSource={todoList}
+                    renderItem={listItem}
+                    footer={<div><b>raspberryjs</b> @组件列表</div>}
+                />
+            </div>
+            
         )
     }
 }

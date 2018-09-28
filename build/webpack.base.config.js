@@ -37,14 +37,31 @@ module.exports = {
                 use: ['happypack/loader?id=happybabel','awesome-typescript-loader']
             },{
                 test: /\.css$/,
+                exclude: path.resolve(__dirname, '../app/webroot'),
                 use: ExtractTextPlugin.extract({
-                    use: ['css-loader?minimize','postcss-loader'],
+                    use: [
+                        'css-loader?minimize',
+                        'postcss-loader'
+                    ],
+                    fallback: 'style-loader'
+                })
+            },{
+                test:/\.css$/,
+                include: path.resolve(__dirname, '../app/webroot'),
+                use: ExtractTextPlugin.extract({
+                    use: [
+                        'css-loader?modules,localIdentName="[name]-[local]-[hash:base64:6]"',
+                    ],
                     fallback: 'style-loader'
                 })
             },{
                 test:/\.less$/,
                 use: ExtractTextPlugin.extract({
-                    use: ['css-loader?minimize','postcss-loader','less-loader'],
+                    use: [
+                        'css-loader?minimize',
+                        'postcss-loader',
+                        'less-loader'
+                    ],
                     fallback: 'style-loader'
                 })
             },{

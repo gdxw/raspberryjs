@@ -23,51 +23,8 @@ export default class GlobalSider extends PureComponent {
     }
 
     render() {
-        const {collapsed} = this.props;
-        const LeftSiderData = this.props.siderData || [{
-            label: '首页',
-            key: 'home',
-            url: '/',
-            icon: 'home'
-        },{
-            label: '日记',
-            key: 'diary',
-            url: '/diary',
-            icon: 'appstore-o'
-        },{
-            label: '文章',
-            key: 'article',
-            url: '/article',
-            icon: 'file',
-            child: [{
-                label: '文章分类',
-                key: 'article-category',
-                url: '/article/category',
-            },{
-                label: '文章分类2',
-                key: 'article-category2',
-                url: '/article/category2',
-            },{
-                label: '文章分类3',
-                key: 'article-category3',
-                url: '/article/category3',
-            }]
-        },{
-            label: '书籍',
-            key: 'book',
-            url: '/book',
-            icon: 'book'
-        },{
-            label: '分享',
-            key: 'share',
-            url: '/share',
-            icon: 'share-alt'
-        },{
-            label: '关于我们',
-            key: 'about-us',
-            url: '/about-us',
-            icon: 'team'
-        }]
+        const {collapsed, defaultSelectedKeys} = this.props;
+        const LeftSiderData = this.props.siderData || [];
         let subMenu = LeftSiderData.map((item,index)=>{
             let key = (item.key || index) + '';
             if(item.child && item.child.length){
@@ -99,7 +56,7 @@ export default class GlobalSider extends PureComponent {
                 <Menu
                 theme="dark"
                 onClick={this.handleClick}
-                defaultSelectedKeys={['1']}
+                defaultSelectedKeys={defaultSelectedKeys}
                 defaultOpenKeys={['sub1']}
                 mode="inline"
                 >

@@ -13,6 +13,7 @@
 * 文档 
 * 组件
 * antd icon 加载地址处理
+* PropTypes 类型检查
 
 
 ## 页面

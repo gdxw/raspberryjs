@@ -23,9 +23,9 @@ export default class GlobalFooter extends PureComponent {
         href: '//github.com/gdxw',
         blankTarget: true,
       }, {
-        key: '猪八戒',
-        title: '猪八戒网',
-        href: '//www.zbj.com',
+        key: '枫林杀',
+        title: '枫林杀-1v5',
+        href: '//www.baidu.com',
         blankTarget: true,
       }]
     };
@@ -51,7 +51,7 @@ export default class GlobalFooter extends PureComponent {
         }
         <div className="copyright">
           <div>
-            Copyright <Icon type="copyright" /> 2018 猪八戒网平台技术前端组出品
+            Copyright <Icon type="copyright" /> 2018 枫林杀出品
           </div>
         </div> 
       </div>

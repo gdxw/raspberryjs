@@ -28,6 +28,16 @@ module.exports = [{
         label: 'todoList',
         icon: 'appstore-o',
         key: 'todo-list',
+        routes: [
+            { 
+                path: '/todo-list/:id',
+                key: 'todo-list-item',
+                component: Loadable({
+                    loader:() => import('./page/todo-list'),
+                    loading: pageLoading
+                })
+            }
+        ]
     },{ 
         path: '/article',
         component:  Loadable({
