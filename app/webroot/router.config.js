@@ -11,68 +11,77 @@ module.exports = [{
     component: Layout,
     routes:[{ 
         path: '/',
+        key: 'home',
         component: Loadable({
             loader:() => import('./page/home'),
             loading: pageLoading
         }),
-        exact: true,
-        label: '首页',
-        icon: 'home',
-        key: 'home',
+        exact: true
     },{ 
         path: '/todo-list',
+        key: 'todo-list',
         component: Loadable({
             loader:() => import('./page/todo-list'),
             loading: pageLoading
         }),
-        label: 'todoList',
-        icon: 'appstore-o',
-        key: 'todo-list',
-        routes: [
-            { 
-                path: '/todo-list/:id',
-                key: 'todo-list-item',
-                component: Loadable({
-                    loader:() => import('./page/todo-list'),
-                    loading: pageLoading
-                })
-            }
-        ]
+        routes: [{
+            path: '/todo-list/text',
+            key: 'todo-list-text',
+            component: Loadable({
+                loader:() => import('./page/todo-list'),
+                loading: pageLoading
+            }),
+        }]
+    },{
+        path: '/todo-list/:id',
+        key: 'todo-list-item',
+        component: Loadable({
+            loader:() => import('./page/todo-list'),
+            loading: pageLoading
+        })
     },{ 
         path: '/article',
+        key: 'article',
         component:  Loadable({
             loader:() => import('./page/article'),
             loading: pageLoading
-        }),
-        label: '文章',
-        icon: 'file',
-        key: 'article',
+        })
     },{ 
         path: '/share',
+        key: 'share',
         component: Loadable({
             loader:() => import('./page/share'),
             loading: pageLoading
-        }),
-        label: '分享',
-        icon: 'share-alt',
-        key: 'share',
+        })
     },{ 
+        key: 'book',
         path: '/book',
         component: Loadable({
             loader:() => import('./page/book'),
             loading: pageLoading
         }),
-        label: '书籍',
-        icon: 'book',
-        key: 'book',
+       
+    },{ 
+        key: 'book-add',
+        path: '/book-add',
+        component: Loadable({
+            loader:() => import('./page/book'),
+            loading: pageLoading
+        }),
+    },{ 
+        key: 'book-admin',
+        path: '/book-admin',
+        component: Loadable({
+            loader:() => import('./page/book'),
+            loading: pageLoading
+        }),
+       
     },{ 
         path: '/about-us',
+        key: 'about-us',
         component: Loadable({
             loader:() => import('./page/about-us'),
             loading: pageLoading
-        }),
-        label: '关于我们',
-        icon: 'team',
-        key: 'about-us',
+        })
     }]
 }]

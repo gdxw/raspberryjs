@@ -3,7 +3,7 @@
 import * as common from './action-type';
 
 const initialState = {
-    collapsed: true,
+    collapsed: false,
     text: 'Use Redux',
     completed: false,
     id: 0,

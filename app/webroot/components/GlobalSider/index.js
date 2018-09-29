@@ -23,16 +23,16 @@ export default class GlobalSider extends PureComponent {
     }
 
     render() {
-        const {collapsed, defaultSelectedKeys} = this.props;
+        const {collapsed, defaultSelectedKeys,defaultOpenKeys} = this.props;
         const LeftSiderData = this.props.siderData || [];
         let subMenu = LeftSiderData.map((item,index)=>{
             let key = (item.key || index) + '';
-            if(item.child && item.child.length){
+            if(item.children && item.children.length){
                 return (<SubMenu key={key} title={<span><Icon type={item.icon} /><span>{item.label}</span></span>}>
                 {
-                    item.child.map((childItem,childIndex)=>{
+                    item.children.map((childItem,childIndex)=>{
                     let childKey = (childItem.key || (index+ '-' +childIndex)) + '';
-                    return (<Menu.Item key={childKey}><Link to={item.url}><span>{childItem.label}</span></Link></Menu.Item>)
+                    return (<Menu.Item key={childKey}><Link to={childItem.url}><span>{childItem.label}</span></Link></Menu.Item>)
                     })
                 }
                 </SubMenu>)
@@ -43,7 +43,7 @@ export default class GlobalSider extends PureComponent {
                         <Icon type={item.icon} />
                         <span>{item.label}</span>
                     </Link>
-                    </Menu.Item>)
+                </Menu.Item>)
             }
         })
         return (
@@ -57,7 +57,7 @@ export default class GlobalSider extends PureComponent {
                 theme="dark"
                 onClick={this.handleClick}
                 defaultSelectedKeys={defaultSelectedKeys}
-                defaultOpenKeys={['sub1']}
+                defaultOpenKeys={defaultOpenKeys}
                 mode="inline"
                 >
                     {subMenu}
